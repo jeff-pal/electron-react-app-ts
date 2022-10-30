@@ -16,9 +16,8 @@ function createWindow () {
     }
   })
 
-  const fileUrl = url.pathToFileURL('../build/index.html');
-  const appUrl = url.format(fileUrl);
-  
+  const appUrl = win.loadURL(`file://${path.join(__dirname, '../build/index.html')}`);
+
   win.loadURL(
     isDev
       ? 'http://localhost:3000'
