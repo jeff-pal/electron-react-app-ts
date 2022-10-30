@@ -1,8 +1,7 @@
 require('@electron/remote/main').initialize();
 const path = require('path');
-const { app, BrowserWindow, Menu } = require('electron');
+const { app, BrowserWindow } = require('electron');
 const isDev = require('electron-is-dev');
-const url = require('url');
 
 function createWindow () {
   const win = new BrowserWindow({
