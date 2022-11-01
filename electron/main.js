@@ -1,18 +1,27 @@
 require('@electron/remote/main').initialize();
 const path = require('path');
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain, ipcRenderer, } = require('electron');
 const isDev = require('electron-is-dev');
+
+ipcMain.on('TEST123', (event, arg) => {
+  event.sender.send('TEST123', {
+    receivedArgs: arg,
+    appName: app.getName(),
+    appVersion: app.getVersion(),
+  });
+});
 
 function createWindow () {
   const win = new BrowserWindow({
     width: 800,
     height: 600,
+    icon: path.join(__dirname, './favicon.icns'),
     webPreferences: {
       preload: path.join(__dirname, './preload.js'),
       nodeIntegration: true,
       enableRemoteModule: true,
       contextIsolation: false
-    }
+    },
   })
 
   const appUrl = win.loadURL(`file://${path.join(__dirname, '../build/index.html')}`);
@@ -22,7 +31,7 @@ function createWindow () {
       ? 'http://localhost:3000'
       : appUrl
   );
-  
+
   if (isDev) {
     win.webContents.openDevTools();
   }
