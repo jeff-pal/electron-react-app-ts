@@ -1,6 +1,6 @@
 require('@electron/remote/main').initialize();
 const path = require('path');
-const { app, BrowserWindow, ipcMain, ipcRenderer, } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const isDev = require('electron-is-dev');
 
 ipcMain.on('TEST123', (event, arg) => {
@@ -17,9 +17,8 @@ function createWindow () {
     height: 600,
     icon: path.join(__dirname, './favicon.icns'),
     webPreferences: {
-      preload: path.join(__dirname, './preload.js'),
+      preload: path.join(__dirname, './preload.ts'),
       nodeIntegration: true,
-      enableRemoteModule: true,
       contextIsolation: false
     },
   })

@@ -2,7 +2,7 @@
   "name": "dev-tools",
   "version": "0.1.0",
   "private": true,
-  "main": "electron/main.js",
+  "main": "electron/main.ts",
   "homepage": "./",
   "dependencies": {
     "@electron/remote": "^2.0.8",
