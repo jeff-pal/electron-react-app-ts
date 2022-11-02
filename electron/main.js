@@ -24,7 +24,7 @@ function createWindow () {
     },
   })
 
-  const appUrl = win.loadURL(`file://${path.join(__dirname, '../build/index.html')}`);
+  const appUrl = `file://${path.join(__dirname, '../build/index.html')}`;
 
   win.loadURL(
     isDev
